@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.agileapes.motorex.parent</groupId>
     <artifactId>motorex-parent</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1</version>
     <name>Motorex Parent</name>
     <description>This module serves as the centerpiece for managing
         dependencies for the whole of Motorex project</description>

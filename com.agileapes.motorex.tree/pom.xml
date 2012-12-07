@@ -9,15 +9,9 @@
         <relativePath>../com.agileapes.motorex.parent/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>com.agileapes.motorex.string</artifactId>
-    <name>Motorex String Tools</name>
-    <description>This module will hold tools for managing string data as required by Motorex</description>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-        </dependency>
-    </dependencies>
+    <artifactId>motorex-tree</artifactId>
+    <name>Motorex Tree Tools</name>
+    <description>This module will contain utilities for managing information using
+    a tree data structure</description>
 
 </project>
