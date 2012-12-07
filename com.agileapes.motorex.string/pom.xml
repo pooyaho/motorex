@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>motorex-parent</artifactId>
+        <groupId>com.agileapes.motorex.parent</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../com.agileapes.motorex.parent/pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>com.agileapes.motorex.string</artifactId>
+    <name>Motorex String Tools</name>
+    <description>This module will hold tools for managing string data as required by Motorex</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>
