@@ -18,6 +18,7 @@ package com.agileapes.motorex.string.scan.impl;
 import com.agileapes.motorex.string.exception.IllegalScannerSnapshotException;
 import com.agileapes.motorex.string.exception.ImmatureEndOfDocumentException;
 import com.agileapes.motorex.string.exception.MissingExpectedTokenException;
+import com.agileapes.motorex.string.exception.NoParserAvailableException;
 import com.agileapes.motorex.string.scan.DocumentScanner;
 import com.agileapes.motorex.string.scan.ScannerSnapshot;
 import com.agileapes.motorex.string.scan.SnippetParser;
@@ -38,16 +39,25 @@ import java.util.regex.Pattern;
 public class PositionAwareDocumentScanner implements DocumentScanner, PositionAwareTextHandler {
 
     private final SimplePositionHandler positionHandler;
+    private final SnippetParser parser;
     private String document;
     private PatternFactory patternFactory;
     private int cursor;
     private Stack<PositionAwareScannerSnapshot> marks;
 
     public PositionAwareDocumentScanner(String document) {
-        this(document, new DefaultPatternFactory(Pattern.DOTALL | Pattern.MULTILINE));
+        this(document, new DefaultPatternFactory(Pattern.DOTALL | Pattern.MULTILINE), null);
     }
 
     public PositionAwareDocumentScanner(String document, PatternFactory patternFactory) {
+        this(document, patternFactory, null);
+    }
+
+    public PositionAwareDocumentScanner(String document, SnippetParser parser) {
+        this(document, new DefaultPatternFactory(Pattern.DOTALL | Pattern.MULTILINE), parser);
+    }
+
+    public PositionAwareDocumentScanner(String document, PatternFactory patternFactory, SnippetParser parser) {
         if (document == null) {
             throw new NullPointerException();
         }
@@ -55,6 +65,7 @@ public class PositionAwareDocumentScanner implements DocumentScanner, PositionAw
         this.patternFactory = patternFactory;
         this.positionHandler = new SimplePositionHandler();
         this.marks = new Stack<PositionAwareScannerSnapshot>();
+        this.parser = parser;
         remember();
         reset();
     }
@@ -240,6 +251,9 @@ public class PositionAwareDocumentScanner implements DocumentScanner, PositionAw
 
     @Override
     public String parse(SnippetParser parser) {
+        if (parser == null) {
+            throw new NoParserAvailableException();
+        }
         final ScannerSnapshot snapshot = remember();
         final int marked = marks.size();
         final Token parsed = parser.parse(this);
@@ -266,8 +280,18 @@ public class PositionAwareDocumentScanner implements DocumentScanner, PositionAw
     }
 
     @Override
+    public String parse() {
+        return parse(getSnippetParser());
+    }
+
+    @Override
     public String getRemainder() {
         return document.substring(cursor);
+    }
+
+    @Override
+    public SnippetParser getSnippetParser() {
+        return parser;
     }
 
     @Override

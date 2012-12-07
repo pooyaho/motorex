@@ -198,10 +198,23 @@ public interface DocumentScanner {
     String parse(SnippetParser parser);
 
     /**
+     * This method will run the default parser over the remaining of the document
+     * @return the parsed portion
+     * @see #getSnippetParser()
+     * @see #parse(SnippetParser)
+     */
+    String parse();
+
+    /**
      * This method will return the unprocessed portion of the text, i.e. from cursor
      * position onwards
      * @return the remainder of the document
      */
     String getRemainder();
+
+    /**
+     * @return the default parser used by this scanner
+     */
+    SnippetParser getSnippetParser();
 
 }

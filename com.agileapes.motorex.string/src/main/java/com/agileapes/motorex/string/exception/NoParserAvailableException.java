@@ -13,24 +13,11 @@
  * or substantial portions of the Software.
  */
 
-package com.agileapes.motorex.string.scan;
-
-import com.agileapes.motorex.string.token.Token;
+package com.agileapes.motorex.string.exception;
 
 /**
- * This interface will expose functionality to enable developers to write meaningful batches of
- * scanning operations and form small parsers of their own
- *
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
- * @since 1.0 (2012/12/7, 20:05)
+ * @since 1.0 (2012/12/7, 22:30)
  */
-public interface SnippetParser {
-
-    /**
-     * The code to be executed by the scanner when a parse operation is required
-     * @param scanner    the scanner holding the document
-     * @return the token to be used by the parser or {@code null} if no such token exists
-     */
-    Token parse(DocumentScanner scanner);
-
+public class NoParserAvailableException extends ScannerException {
 }
