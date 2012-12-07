@@ -25,6 +25,7 @@ import com.agileapes.motorex.string.text.PatternFactory;
 import com.agileapes.motorex.string.text.PositionAwareTextHandler;
 import com.agileapes.motorex.string.text.impl.DefaultPatternFactory;
 import com.agileapes.motorex.string.text.impl.SimplePositionHandler;
+import com.agileapes.motorex.string.token.Token;
 
 import java.util.Stack;
 import java.util.regex.Matcher;
@@ -47,10 +48,14 @@ public class PositionAwareDocumentScanner implements DocumentScanner, PositionAw
     }
 
     public PositionAwareDocumentScanner(String document, PatternFactory patternFactory) {
+        if (document == null) {
+            throw new NullPointerException();
+        }
         this.document = document;
         this.patternFactory = patternFactory;
         this.positionHandler = new SimplePositionHandler();
         this.marks = new Stack<PositionAwareScannerSnapshot>();
+        remember();
         reset();
     }
 
@@ -103,7 +108,7 @@ public class PositionAwareDocumentScanner implements DocumentScanner, PositionAw
 
     @Override
     public String read(Pattern pattern) {
-        final Matcher matcher = pattern.matcher(document.substring(cursor));
+        final Matcher matcher = pattern.matcher(getRemainder());
         if (matcher.find() && matcher.start() == 0) {
             final String read = matcher.group();
             cursor += read.length();
@@ -163,10 +168,7 @@ public class PositionAwareDocumentScanner implements DocumentScanner, PositionAw
 
     @Override
     public boolean has(String token) {
-        if (token.length() > remaining()) {
-            throw new ImmatureEndOfDocumentException();
-        }
-        return document.substring(cursor).startsWith(token);
+        return getRemainder().startsWith(token);
     }
 
     @Override
@@ -176,7 +178,7 @@ public class PositionAwareDocumentScanner implements DocumentScanner, PositionAw
 
     @Override
     public boolean matches(Pattern pattern) {
-        final Matcher matcher = pattern.matcher(document.substring(cursor));
+        final Matcher matcher = pattern.matcher(getRemainder());
         return matcher.find() && matcher.start() == 0;
     }
 
@@ -192,12 +194,18 @@ public class PositionAwareDocumentScanner implements DocumentScanner, PositionAw
 
     @Override
     public void push(String text) {
-        document = document.substring(0, cursor) + text + document.substring(cursor);
+        document = document.substring(0, cursor) + text + getRemainder();
     }
 
     @Override
     public void reset() {
         restore(marks.peek());
+    }
+
+    @Override
+    public void rewind() {
+        cursor = 0;
+        positionHandler.reset();
     }
 
     @Override
@@ -209,7 +217,9 @@ public class PositionAwareDocumentScanner implements DocumentScanner, PositionAw
 
     @Override
     public void forget() {
-        marks.pop();
+        if (marks.size() > 1) {
+            marks.pop();
+        }
     }
 
     @Override
@@ -218,7 +228,13 @@ public class PositionAwareDocumentScanner implements DocumentScanner, PositionAw
             throw new IllegalScannerSnapshotException();
         }
         this.document = snapshot.getDocument();
+        if (document == null) {
+            throw new IllegalScannerSnapshotException();
+        }
         this.cursor = snapshot.getOffset();
+        if (document.length() < cursor) {
+            throw new IllegalScannerSnapshotException();
+        }
         this.positionHandler.restore(((PositionAwareTextHandler) snapshot).getLine(), ((PositionAwareTextHandler) snapshot).getColumn());
     }
 
@@ -226,13 +242,32 @@ public class PositionAwareDocumentScanner implements DocumentScanner, PositionAw
     public String parse(SnippetParser parser) {
         final ScannerSnapshot snapshot = remember();
         final int marked = marks.size();
-        final String parsedText = parser.parse(this);
-        if (marked != marks.size()) {
+        final Token parsed = parser.parse(this);
+        //This is to make sure that the snapshot set by the scanner is not
+        //forgotten during parsing
+        if (marked > marks.size()) {
             throw new IllegalScannerSnapshotException();
         }
+        //This is to clean up after untidy parsing with loose snapshots
+        while (marks.size() > marked) {
+            forget();
+        }
+        //if {@code null} is returned, we will assume that the parser
+        //did not find anything useful, and we will have to restore any
+        //actions taken by the parser
+        int processedLength = parsed == null ? 0 : parsed.getOffset() + parsed.getLength();
         restore(snapshot);
         forget();
-        return parsedText;
+        if (processedLength == 0) {
+            return "";
+        }
+        final String read = read(processedLength);
+        return read.substring(parsed.getOffset());
+    }
+
+    @Override
+    public String getRemainder() {
+        return document.substring(cursor);
     }
 
     @Override

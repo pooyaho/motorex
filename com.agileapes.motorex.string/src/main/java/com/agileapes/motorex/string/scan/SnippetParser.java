@@ -15,12 +15,14 @@
 
 package com.agileapes.motorex.string.scan;
 
+import com.agileapes.motorex.string.token.Token;
+
 /**
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
  * @since 1.0 (2012/12/7, 20:05)
  */
 public interface SnippetParser {
 
-    String parse(DocumentScanner scanner);
+    Token parse(DocumentScanner scanner);
 
 }

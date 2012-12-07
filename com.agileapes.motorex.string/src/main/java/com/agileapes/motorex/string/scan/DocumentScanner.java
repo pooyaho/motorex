@@ -168,6 +168,11 @@ public interface DocumentScanner {
     void reset();
 
     /**
+     * This method will simply go back to the beginning of the document
+     */
+    void rewind();
+
+    /**
      * A call to this method will cause the scanner to remember the current position in the
      * document, and thus making subsequent calls to {@link #reset()} to jump to this position
      * @return The snapshot for the current situation
@@ -191,5 +196,12 @@ public interface DocumentScanner {
      * @return the parsed portion
      */
     String parse(SnippetParser parser);
+
+    /**
+     * This method will return the unprocessed portion of the text, i.e. from cursor
+     * position onwards
+     * @return the remainder of the document
+     */
+    String getRemainder();
 
 }
