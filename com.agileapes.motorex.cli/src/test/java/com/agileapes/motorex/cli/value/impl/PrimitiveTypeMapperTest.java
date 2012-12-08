@@ -18,8 +18,6 @@ package com.agileapes.motorex.cli.value.impl;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.lang.reflect.Method;
-
 /**
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
  * @since 1.0 (2012/12/8, 20:14)
