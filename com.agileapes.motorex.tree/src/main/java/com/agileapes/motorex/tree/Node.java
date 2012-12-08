@@ -16,7 +16,6 @@
 package com.agileapes.motorex.tree;
 
 import com.agileapes.motorex.tree.traverse.NodeTraverseCallback;
-import com.agileapes.motorex.tree.traverse.TraverseOrder;
 
 import java.util.List;
 import java.util.Set;
