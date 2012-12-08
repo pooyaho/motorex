@@ -16,11 +16,19 @@
 package com.agileapes.motorex.cli.value;
 
 /**
+ * This interface is used by the framework to ensure that any beans requiring
+ * to interact with the value reader context can get their hands on it.
+ *
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
  * @since 1.0 (2012/12/8, 15:54)
  */
 public interface ValueReaderContextAware {
 
+    /**
+     * This method is used to inject the value reader context used by the application
+     * into the requesting bean
+     * @param valueReaderContext    the context
+     */
     void setValueReaderContext(ValueReaderContext valueReaderContext);
 
 }

@@ -19,6 +19,9 @@ import com.agileapes.motorex.cli.exception.UnsupportedValueTypeException;
 import com.agileapes.motorex.cli.value.TypeMapper;
 
 /**
+ * This value reader is capable of reading the value of all common types from
+ * their given String representation
+ *
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
  * @since 1.0 (2012/12/8, 15:41)
  */

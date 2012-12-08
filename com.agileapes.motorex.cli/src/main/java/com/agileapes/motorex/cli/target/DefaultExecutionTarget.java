@@ -16,6 +16,10 @@
 package com.agileapes.motorex.cli.target;
 
 /**
+ * This is a marker interface and designates its implementers as
+ * <em>the</em> default execution target. As such, it would be
+ * meaningless to have more than one target implement this interface.
+ *
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
  * @since 1.0 (2012/12/8, 16:31)
  */

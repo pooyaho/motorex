@@ -16,6 +16,9 @@
 package com.agileapes.motorex.cli.config.impl;
 
 /**
+ * This implementation will make it easy to define flags for
+ * execution targets.
+ *
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
  * @since 1.0 (2012/12/8, 16:24)
  */

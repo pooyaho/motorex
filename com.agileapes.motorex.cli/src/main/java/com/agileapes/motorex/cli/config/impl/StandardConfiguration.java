@@ -29,6 +29,10 @@ import java.util.Map;
 import java.util.Set;
 
 /**
+ * This is an standard implementation for {@link Configuration} and is presented
+ * to make it unnecessary for {@link com.agileapes.motorex.cli.config.ConfigurationBuilder}
+ * instances to define their own.
+ *
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
  * @since 1.0 (2012/12/8, 15:18)
  */

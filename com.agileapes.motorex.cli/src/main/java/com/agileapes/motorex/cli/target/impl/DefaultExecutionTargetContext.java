@@ -16,6 +16,7 @@
 package com.agileapes.motorex.cli.target.impl;
 
 import com.agileapes.motorex.cli.exception.DuplicateExecutionTargetException;
+import com.agileapes.motorex.cli.exception.MultipleDefaultExecutionTargetsException;
 import com.agileapes.motorex.cli.exception.NoSuchExecutionTargetException;
 import com.agileapes.motorex.cli.target.DefaultExecutionTarget;
 import com.agileapes.motorex.cli.target.ExecutionTarget;
@@ -27,6 +28,10 @@ import java.util.Map;
 import java.util.Set;
 
 /**
+ * This implementation of the {@link ExecutionTargetContext} and {@link ExecutionTargetRegistry}
+ * interfaces is a fully functional concrete class and can act as a stand-alone context
+ * for execution targets.
+ *
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
  * @since 1.0 (2012/12/8, 16:36)
  */
@@ -62,6 +67,9 @@ public class DefaultExecutionTargetContext implements ExecutionTargetContext, Ex
             throw new DuplicateExecutionTargetException(executionTarget.getIdentifier());
         }
         if (executionTarget instanceof DefaultExecutionTarget) {
+            if (defaultTarget != null) {
+                throw new MultipleDefaultExecutionTargetsException();
+            }
             defaultTarget = executionTarget;
         }
         targets.put(executionTarget.getIdentifier(), executionTarget);

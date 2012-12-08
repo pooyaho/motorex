@@ -16,11 +16,18 @@
 package com.agileapes.motorex.cli.target;
 
 /**
+ * This interface is used as the entry point for the IoC container
+ * to help it make the execution target context available to all
+ * who need it.
+ *
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
  * @since 1.0 (2012/12/8, 16:39)
  */
 public interface ExecutionTargetContextAware {
 
+    /**
+     * @param context    the context used by the application
+     */
     void setExecutionTargetContext(ExecutionTargetContext context);
 
 }

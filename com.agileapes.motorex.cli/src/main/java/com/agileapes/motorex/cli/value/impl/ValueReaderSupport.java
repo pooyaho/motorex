@@ -22,6 +22,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * This class acts as a supporting base class for all {@link ValueReader}
+ * instances and rids them of the need to rewrite the same code for defining
+ * target types.
+ *
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
  * @since 1.0 (2012/12/8, 15:38)
  */

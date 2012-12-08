@@ -18,11 +18,19 @@ package com.agileapes.motorex.cli.target;
 import com.agileapes.motorex.cli.exception.DuplicateExecutionTargetException;
 
 /**
+ * This interface exposes registry functionality with the framework, so that
+ * execution targets can be registered and held within a single point.
+ *
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
  * @since 1.0 (2012/12/8, 16:36)
  */
 public interface ExecutionTargetRegistry {
 
+    /**
+     * Will attempt to register the given target with the application
+     * @param executionTarget    the execution target instance
+     * @throws DuplicateExecutionTargetException
+     */
     void register(ExecutionTarget executionTarget) throws DuplicateExecutionTargetException;
 
 }

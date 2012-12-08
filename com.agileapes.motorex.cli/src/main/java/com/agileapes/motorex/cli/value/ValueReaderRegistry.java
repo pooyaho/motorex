@@ -18,11 +18,19 @@ package com.agileapes.motorex.cli.value;
 import com.agileapes.motorex.cli.exception.TypeAlreadyHandledException;
 
 /**
+ * This interface will act as the registry and storehouse of the value readers
+ * that are discovered throughout the application
+ *
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
  * @since 1.0 (2012/12/8, 15:30)
  */
 public interface ValueReaderRegistry {
 
+    /**
+     * Will attempt to register the given value reader
+     * @param valueReader    the value reader
+     * @throws TypeAlreadyHandledException
+     */
     void register(ValueReader valueReader) throws TypeAlreadyHandledException;
 
 }

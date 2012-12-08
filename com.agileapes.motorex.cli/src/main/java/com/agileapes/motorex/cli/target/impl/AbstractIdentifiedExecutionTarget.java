@@ -22,6 +22,14 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * This abstract class is provided to be used as a support by execution targets,
+ * so that they would not need to implement the more redundant methods. Also, this
+ * class is used by the framework to replace Spring been names with execution
+ * target identifiers.
+ *
+ * So, if your execution target does not extend this class, you will have to hard
+ * code the identifier inside the code, or devise another method.
+ *
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
  * @since 1.0 (2012/12/8, 16:28)
  */

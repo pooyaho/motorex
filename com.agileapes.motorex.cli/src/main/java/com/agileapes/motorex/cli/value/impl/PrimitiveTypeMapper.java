@@ -21,6 +21,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * This type mapper will map all of Java&trade;'s primitive types into
+ * their object-oriented counterparts
+ *
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
  * @since 1.0 (2012/12/8, 15:41)
  */

@@ -16,11 +16,23 @@
 package com.agileapes.motorex.cli.config;
 
 /**
+ * A ConfigurationBuilder will build an instance of Configuration each
+ * times its {@link #build()} method is called. This gives you the opportunity
+ * to create configurations from different sources.
+ *
+ * Please note that a {@link Specification} should supersede any given
+ * Configuration. This means that all options available through a configuration
+ * build must be also available through the specification. The same cannot be
+ * said for the other direction.
+ *
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
  * @since 1.0 (2012/12/8, 15:10)
  */
 public interface ConfigurationBuilder {
 
+    /**
+     * @return the configuration for the current setting.
+     */
     Configuration build();
 
 }

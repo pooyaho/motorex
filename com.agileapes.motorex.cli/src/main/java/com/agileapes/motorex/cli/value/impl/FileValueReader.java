@@ -18,6 +18,9 @@ package com.agileapes.motorex.cli.value.impl;
 import java.io.File;
 
 /**
+ * This value reader object will read the input and return a
+ * {@link File} object pointing to the path specified by the string
+ *
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
  * @since 1.0 (2012/12/8, 15:37)
  */

@@ -21,6 +21,10 @@ import com.agileapes.motorex.cli.config.SpecificationBuilder;
 import com.agileapes.motorex.cli.target.ExecutionTarget;
 
 /**
+ * This implementation simply takes in the options defined by
+ * an instance of {@link ExecutionTarget} and build an instance of
+ * {@link StandardSpecification} on top of those.
+ *
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
  * @since 1.0 (2012/12/8, 16:40)
  */

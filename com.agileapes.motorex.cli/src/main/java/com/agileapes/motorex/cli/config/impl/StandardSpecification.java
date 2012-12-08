@@ -26,6 +26,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * This is a standard implementation of an Option Specification and is
+ * designed in a way that building specifications is typically rather easy.
+ *
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
  * @since 1.0 (2012/12/8, 15:25)
  */

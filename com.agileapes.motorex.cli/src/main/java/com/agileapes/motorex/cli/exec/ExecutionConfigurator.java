@@ -18,7 +18,6 @@ package com.agileapes.motorex.cli.exec;
 import com.agileapes.motorex.cli.config.ConfigurationBuilder;
 import com.agileapes.motorex.cli.config.impl.ArrayConfigurationBuilder;
 import com.agileapes.motorex.cli.config.impl.StandardSpecificationBuilder;
-import com.agileapes.motorex.cli.exception.NoSuchExecutionTargetException;
 import com.agileapes.motorex.cli.target.ExecutionTarget;
 import com.agileapes.motorex.cli.target.ExecutionTargetContext;
 import com.agileapes.motorex.cli.target.ExecutionTargetContextAware;
@@ -26,6 +25,10 @@ import com.agileapes.motorex.cli.value.ValueReaderContext;
 import com.agileapes.motorex.cli.value.ValueReaderContextAware;
 
 /**
+ * This class will put together the magic provided by value readers and execution targets
+ * and through the given input array, will execute the correct target using the proper
+ * variable arguments.
+ *
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
  * @since 1.0 (2012/12/8, 16:32)
  */

@@ -26,6 +26,9 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.util.ClassUtils;
 
 /**
+ * This value reader context is defined so that Spring integration can be performed without
+ * any problems
+ *
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
  * @since 1.0 (2012/12/8, 16:55)
  */

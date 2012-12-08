@@ -18,6 +18,9 @@ package com.agileapes.motorex.cli.value.impl;
 import java.util.regex.Pattern;
 
 /**
+ * This value reader will turn the given input string
+ * into a regular expression
+ *
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
  * @since 1.0 (2012/12/8, 15:40)
  */

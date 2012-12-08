@@ -26,6 +26,10 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.util.ClassUtils;
 
 /**
+ * This implementation of the context and registry interfaces is an extension to
+ * {@link DefaultExecutionTargetContext} and adds Spring support and automatic target
+ * bean discovery to the framework.
+ *
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
  * @since 1.0 (2012/12/8, 17:02)
  */

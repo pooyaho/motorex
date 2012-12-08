@@ -13,23 +13,15 @@
  * or substantial portions of the Software.
  */
 
-package com.agileapes.motorex.cli.value;
+package com.agileapes.motorex.cli.exception;
 
 /**
- * A type mapper is used to map the definition of any given type to a predesignated
- * type, based on some design time decision.
- *
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
- * @since 1.0 (2012/12/8, 15:41)
+ * @since 1.0 (2012/12/8, 18:27)
  */
-public interface TypeMapper {
+public class MultipleDefaultExecutionTargetsException extends Error {
 
-    /**
-     * This method will map the given type into another type, or return the
-     * given type itself if no mapping is necessary
-     * @param type    the input type
-     * @return the mapped type
-     */
-    Class<?> getType(Class<?> type);
-
+    public MultipleDefaultExecutionTargetsException() {
+        super("There are more than one execution target marked as the default.");
+    }
 }

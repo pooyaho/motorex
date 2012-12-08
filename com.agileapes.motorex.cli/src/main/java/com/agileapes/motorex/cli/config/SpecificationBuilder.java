@@ -16,11 +16,18 @@
 package com.agileapes.motorex.cli.config;
 
 /**
+ * The SpecificationBuilder will create an specification representing the
+ * possible configuration of an execution target's options
+ *
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
  * @since 1.0 (2012/12/8, 15:25)
  */
 public interface SpecificationBuilder {
 
+    /**
+     * @return the specification representing the possible configuration
+     * options for the given execution target
+     */
     Specification build();
 
 }

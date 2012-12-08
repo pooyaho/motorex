@@ -28,6 +28,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * The ArrayConfigurationBuilder will attempt to put together a configuration
+ * setting based on an input String array. This is of particular interest since
+ * Java&trade; like many other languages will make the command line arguments
+ * available as an array of String values.
+ *
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
  * @since 1.0 (2012/12/8, 16:12)
  */
