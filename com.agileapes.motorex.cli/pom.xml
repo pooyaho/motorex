@@ -12,5 +12,15 @@
     <artifactId>motorex-cli</artifactId>
     <name>Motorex CLI Tools</name>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
