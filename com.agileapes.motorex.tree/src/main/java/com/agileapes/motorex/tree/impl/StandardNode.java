@@ -21,7 +21,6 @@ import com.agileapes.motorex.tree.description.NodeDescription;
 import com.agileapes.motorex.tree.exception.NoSuchNodeException;
 import com.agileapes.motorex.tree.traverse.NodeTraverseCallback;
 import com.agileapes.motorex.tree.traverse.TraverseOrder;
-import com.agileapes.motorex.tree.traverse.impl.NodeTraverseCallbackAdapter;
 
 import java.util.*;
 
@@ -30,23 +29,6 @@ import java.util.*;
  * @since 1.0 (2012/12/8, 0:58)
  */
 public class StandardNode extends AbstractSearchableNode {
-
-    private static final class PathBuilder extends NodeTraverseCallbackAdapter {
-
-        private String path = "";
-
-        public String getPath() {
-            return path;
-        }
-
-        @Override
-        public void after(Node node) {
-            path += "/#" + node.getIndex();
-            if (node.hasChildren()) {
-                path += "/";
-            }
-        }
-    }
 
     private String namespace;
     private String name;

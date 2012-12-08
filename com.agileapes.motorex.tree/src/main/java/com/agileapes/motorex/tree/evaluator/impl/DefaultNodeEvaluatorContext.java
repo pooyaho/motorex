@@ -37,6 +37,10 @@ public class DefaultNodeEvaluatorContext implements NodeEvaluatorContext, NodeEv
         evaluators.put("$name", new NameNodeEvaluator());
         evaluators.put("$attribute", new AttributeNodeEvaluator());
         evaluators.put("$index", new IndexNodeEvaluator());
+        evaluators.put("isRoot", new IsRootNodeEvaluator());
+        evaluators.put("isLeaf", new IsLeafNodeEvaluator());
+        evaluators.put("nextTo", new NextToNodeEvaluator());
+        evaluators.put("previousTo", new PreviousToNodeEvaluator());
     }
 
     public DefaultNodeEvaluatorContext(Map<String, NodeEvaluator> evaluators) {

@@ -13,28 +13,29 @@
  * or substantial portions of the Software.
  */
 
-package com.agileapes.motorex.tree.evaluator;
+package com.agileapes.motorex.tree.evaluator.impl;
 
 import com.agileapes.motorex.tree.Node;
-import com.agileapes.motorex.tree.impl.StandardNode;
+
+import java.util.List;
 
 /**
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
- * @since 1.0 (2012/12/8, 2:50)
+ * @since 1.0 (2012/12/8, 6:25)
  */
-public abstract class NodeEvaluatorTest {
+public class NextToNodeEvaluator extends NodeEvaluatorSupport {
 
-    protected Node getNode() {
-        final StandardNode node = new StandardNode("node");
-        node.setAttribute("name", "node");
-        node.setAttribute("age", "128");
-        node.setAttribute("xyz", "");
-        node.appendChild(new StandardNode("a"));
-        node.appendChild(new StandardNode("b"));
-        node.appendChild(new StandardNode("c"));
-        node.getFirstChild().setAttribute("asd", "<hello>");
-        node.getLastChild().setAttribute("mno", "12,34");
-        return node;
+    @Override
+    public boolean test(Node node, List<String> parameters) {
+        require(parameters, 1);
+        permit(parameters, 1);
+        while (node != null) {
+            if (node.matches(parameters.get(0))) {
+                return true;
+            }
+            node = node.getPreviousSibling();
+        }
+        return false;
     }
 
 }

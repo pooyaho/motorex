@@ -13,28 +13,29 @@
  * or substantial portions of the Software.
  */
 
-package com.agileapes.motorex.tree.evaluator;
+package com.agileapes.motorex.tree.impl;
 
 import com.agileapes.motorex.tree.Node;
-import com.agileapes.motorex.tree.impl.StandardNode;
+import com.agileapes.motorex.tree.traverse.impl.NodeTraverseCallbackAdapter;
 
 /**
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
- * @since 1.0 (2012/12/8, 2:50)
+ * @since 1.0 (2012/12/8, 6:47)
  */
-public abstract class NodeEvaluatorTest {
+class PathBuilder extends NodeTraverseCallbackAdapter {
 
-    protected Node getNode() {
-        final StandardNode node = new StandardNode("node");
-        node.setAttribute("name", "node");
-        node.setAttribute("age", "128");
-        node.setAttribute("xyz", "");
-        node.appendChild(new StandardNode("a"));
-        node.appendChild(new StandardNode("b"));
-        node.appendChild(new StandardNode("c"));
-        node.getFirstChild().setAttribute("asd", "<hello>");
-        node.getLastChild().setAttribute("mno", "12,34");
-        return node;
+    private String path = "";
+
+    public String getPath() {
+        return path;
+    }
+
+    @Override
+    public void after(Node node) {
+        path += "/#" + node.getIndex();
+        if (node.hasChildren()) {
+            path += "/";
+        }
     }
 
 }
