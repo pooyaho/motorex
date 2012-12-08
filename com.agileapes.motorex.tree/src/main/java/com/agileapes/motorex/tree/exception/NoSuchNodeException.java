@@ -20,4 +20,9 @@ package com.agileapes.motorex.tree.exception;
  * @since 1.0 (2012/12/8, 1:02)
  */
 public class NoSuchNodeException extends Error {
+
+    public NoSuchNodeException() {
+        super("No such node exists in the tree");
+    }
+
 }

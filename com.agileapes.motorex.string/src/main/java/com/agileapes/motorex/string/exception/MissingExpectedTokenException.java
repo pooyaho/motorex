@@ -15,6 +15,8 @@
 
 package com.agileapes.motorex.string.exception;
 
+import java.util.regex.Pattern;
+
 /**
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
  * @since 1.0 (2012/12/7, 19:27)
@@ -24,10 +26,6 @@ public class MissingExpectedTokenException extends ScannerException {
     public MissingExpectedTokenException() {
     }
 
-    public MissingExpectedTokenException(String message) {
-        super(message);
-    }
-
     public MissingExpectedTokenException(String message, Throwable cause) {
         super(message, cause);
     }
@@ -35,4 +33,57 @@ public class MissingExpectedTokenException extends ScannerException {
     public MissingExpectedTokenException(Throwable cause) {
         super(cause);
     }
+
+    public MissingExpectedTokenException(Character... tokens) {
+        this(convertChars(tokens));
+    }
+
+    public MissingExpectedTokenException(char... tokens) {
+        this(convertChars(convertPrimitive(tokens)));
+    }
+
+    public MissingExpectedTokenException(Pattern... patterns) {
+        this(convertPatterns(patterns));
+    }
+
+    public MissingExpectedTokenException(String... tokens) {
+        super("Expected one of the tokens: " + arrayToString(tokens));
+    }
+
+    private static Character[] convertPrimitive(char[] chars) {
+        final Character[] characters = new Character[chars.length];
+        for (int i = 0; i < chars.length; i++) {
+            characters[i] = chars[i];
+        }
+        return characters;
+    }
+
+    private static String[] convertChars(Character[] chars) {
+        final String[] strings = new String[chars.length];
+        for (int i = 0; i < chars.length; i++) {
+            strings[i] = chars[i].toString();
+        }
+        return strings;
+    }
+
+    private static String[] convertPatterns(Pattern[] patterns) {
+        final String[] strings = new String[patterns.length];
+        for (int i = 0; i < patterns.length; i++) {
+            strings[i] = patterns[i].toString();
+        }
+        return strings;
+    }
+
+    private static String arrayToString(String[] strings) {
+        final StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < strings.length; i++) {
+            String string = strings[i];
+            if (i > 0) {
+                builder.append(", ");
+            }
+            builder.append(string);
+        }
+        return builder.toString();
+    }
+
 }

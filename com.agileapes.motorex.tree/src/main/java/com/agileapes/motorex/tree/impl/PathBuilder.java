@@ -16,13 +16,13 @@
 package com.agileapes.motorex.tree.impl;
 
 import com.agileapes.motorex.tree.Node;
-import com.agileapes.motorex.tree.traverse.impl.NodeTraverseCallbackAdapter;
+import com.agileapes.motorex.tree.traverse.impl.UpGoingNodeTraverseCallbackAdapter;
 
 /**
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
  * @since 1.0 (2012/12/8, 6:47)
  */
-class PathBuilder extends NodeTraverseCallbackAdapter {
+class PathBuilder extends UpGoingNodeTraverseCallbackAdapter {
 
     private String path = "";
 

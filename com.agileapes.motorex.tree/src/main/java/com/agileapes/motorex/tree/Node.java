@@ -190,12 +190,11 @@ public interface Node {
 
     /**
      * Performs a traversal in the indicated order
-     * @param order       the traverse order
      * @param callback    the callback to be executed
      * @param <C>         the type of the callback
      * @return the callback itself is returned by this method
      */
-    <C extends NodeTraverseCallback> C traverse(TraverseOrder order, C callback);
+    <C extends NodeTraverseCallback> C traverse(C callback);
 
     /**
      * @return a unique path leading to this exact node at this point in time

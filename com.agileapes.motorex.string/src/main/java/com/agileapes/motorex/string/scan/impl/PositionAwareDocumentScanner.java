@@ -149,12 +149,14 @@ public class PositionAwareDocumentScanner implements DocumentScanner, PositionAw
     }
 
     @Override
-    public char expect(char c) throws MissingExpectedTokenException {
+    public char expect(char... characters) throws MissingExpectedTokenException {
         final char read = read();
-        if (read != c) {
-            throw new MissingExpectedTokenException();
+        for (char character : characters) {
+            if (read == character) {
+                return read;
+            }
         }
-        return read;
+        throw new MissingExpectedTokenException(characters);
     }
 
     @Override
@@ -166,7 +168,7 @@ public class PositionAwareDocumentScanner implements DocumentScanner, PositionAw
                 return token;
             }
         }
-        throw new MissingExpectedTokenException();
+        throw new MissingExpectedTokenException(tokens);
     }
 
     @Override
@@ -176,7 +178,7 @@ public class PositionAwareDocumentScanner implements DocumentScanner, PositionAw
                 return read(pattern);
             }
         }
-        throw new MissingExpectedTokenException();
+        throw new MissingExpectedTokenException(patterns);
     }
 
     @Override

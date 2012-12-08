@@ -250,14 +250,17 @@ public class StandardNode extends AbstractSearchableNode {
     }
 
     @Override
-    public <C extends NodeTraverseCallback> C traverse(TraverseOrder order, C callback) {
+    public <C extends NodeTraverseCallback> C traverse(C callback) {
+        if (callback == null) {
+            throw new NullPointerException();
+        }
         callback.before(this);
-        if (TraverseOrder.DOWN.equals(order)) {
+        if (TraverseOrder.DOWN.equals(callback.getTraverseOrder())) {
             for (Node child : children) {
-                child.traverse(order, callback);
+                child.traverse(callback);
             }
         } else if (parent != null) {
-            parent.traverse(order, callback);
+            parent.traverse(callback);
         }
         callback.after(this);
         return callback;
@@ -265,7 +268,7 @@ public class StandardNode extends AbstractSearchableNode {
 
     @Override
     public String getPath() {
-        return traverse(TraverseOrder.UP, new PathBuilder()).getPath();
+        return traverse(new PathBuilder()).getPath();
     }
 
     @Override

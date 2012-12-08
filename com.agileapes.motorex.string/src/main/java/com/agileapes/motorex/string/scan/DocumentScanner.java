@@ -95,10 +95,11 @@ public interface DocumentScanner {
 
     /**
      * This will read the given character from the document, failing if it does not appear
+     * @param characters    the characters expecting to appear
      * @return the read character
      * @throws MissingExpectedTokenException
      */
-    char expect(char c) throws MissingExpectedTokenException;
+    char expect(char... characters) throws MissingExpectedTokenException;
 
     /**
      * This will attempt to read one of the given tokens from the input, failing if none exist

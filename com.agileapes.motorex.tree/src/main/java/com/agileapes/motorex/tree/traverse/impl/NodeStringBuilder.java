@@ -17,6 +17,7 @@ package com.agileapes.motorex.tree.traverse.impl;
 
 import com.agileapes.motorex.tree.Node;
 import com.agileapes.motorex.tree.traverse.NodeTraverseCallback;
+import com.agileapes.motorex.tree.traverse.TraverseOrder;
 
 /**
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
@@ -25,6 +26,11 @@ import com.agileapes.motorex.tree.traverse.NodeTraverseCallback;
 public class NodeStringBuilder implements NodeTraverseCallback {
 
     private StringBuilder builder = new StringBuilder();
+
+    @Override
+    public TraverseOrder getTraverseOrder() {
+        return TraverseOrder.DOWN;
+    }
 
     @Override
     public void before(Node node) {

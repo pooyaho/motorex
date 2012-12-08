@@ -21,18 +21,8 @@ package com.agileapes.motorex.tree.exception;
  */
 public class NoSuchEvaluatorException extends Error {
 
-    public NoSuchEvaluatorException() {
+    public NoSuchEvaluatorException(String name) {
+        super(String.format("No evaluator with this name has been registered: %s", name));
     }
 
-    public NoSuchEvaluatorException(String message) {
-        super(message);
-    }
-
-    public NoSuchEvaluatorException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    public NoSuchEvaluatorException(Throwable cause) {
-        super(cause);
-    }
 }

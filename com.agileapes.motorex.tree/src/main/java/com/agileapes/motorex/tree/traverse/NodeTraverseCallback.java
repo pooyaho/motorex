@@ -23,6 +23,8 @@ import com.agileapes.motorex.tree.Node;
  */
 public interface NodeTraverseCallback {
 
+    TraverseOrder  getTraverseOrder();
+
     void before(Node node);
 
     void after(Node node);

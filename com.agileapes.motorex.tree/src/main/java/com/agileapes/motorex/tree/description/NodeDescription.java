@@ -236,7 +236,7 @@ public class NodeDescription {
                             scanner.read("\\s*");
                         } else {
                             if (!scanner.has(")")) {
-                                throw new MissingExpectedTokenException();
+                                throw new MissingExpectedTokenException(")");
                             }
                         }
                     }
@@ -248,7 +248,7 @@ public class NodeDescription {
                         scanner.read();
                         scanner.read("\\s*");
                     } else if (!scanner.has("}")) {
-                        throw new MissingExpectedTokenException();
+                        throw new MissingExpectedTokenException("}");
                     }
                 }
                 //closing the list of evaluators

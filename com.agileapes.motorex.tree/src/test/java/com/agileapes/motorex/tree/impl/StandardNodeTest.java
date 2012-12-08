@@ -17,7 +17,6 @@ package com.agileapes.motorex.tree.impl;
 
 import com.agileapes.motorex.tree.NodeType;
 import com.agileapes.motorex.tree.exception.NoSuchNodeException;
-import com.agileapes.motorex.tree.traverse.TraverseOrder;
 import com.agileapes.motorex.tree.traverse.impl.NodeStringBuilder;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -36,11 +35,11 @@ public class StandardNodeTest {
         node.appendChild(new StandardNode("a"));
         a.appendChild(new StandardNode("b"));
         a.appendChild(new StandardNode("c"));
-        String string = node.traverse(TraverseOrder.DOWN, new NodeStringBuilder()).toString();
+        String string = node.traverse(new NodeStringBuilder()).toString();
         Assert.assertEquals(string, "o:+(o:*(b,c),a)");
         a.insertBefore(a.getFirstChild(), new StandardNode("x"));
         a.insertAfter(a.getFirstChild(), new StandardNode("y"));
-        string = node.traverse(TraverseOrder.DOWN, new NodeStringBuilder()).toString();
+        string = node.traverse(new NodeStringBuilder()).toString();
         Assert.assertEquals(string, "o:+(o:*(x,y,b,c),a)");
         Assert.assertNotNull(node.getType());
         Assert.assertEquals(node.getType(), NodeType.INNER_NODE);

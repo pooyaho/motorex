@@ -21,18 +21,8 @@ package com.agileapes.motorex.tree.exception;
  */
 public class DuplicateEvaluatorException extends Error {
 
-    public DuplicateEvaluatorException() {
+    public DuplicateEvaluatorException(String name) {
+        super(String.format("Another evaluator with the name <%s> has already been defined.", name));
     }
 
-    public DuplicateEvaluatorException(String message) {
-        super(message);
-    }
-
-    public DuplicateEvaluatorException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    public DuplicateEvaluatorException(Throwable cause) {
-        super(cause);
-    }
 }

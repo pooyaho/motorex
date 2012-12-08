@@ -16,32 +16,24 @@
 package com.agileapes.motorex.tree.traverse.impl;
 
 import com.agileapes.motorex.tree.Node;
-import com.agileapes.motorex.tree.traverse.NodeTraverseCallback;
-import com.agileapes.motorex.tree.traverse.TraverseOrder;
 
 /**
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
- * @since 1.0 (2012/12/8, 1:11)
+ * @since 1.0 (2012/12/8, 13:18)
  */
-public class NodeTraverseCallbackAdapter implements NodeTraverseCallback {
+public class NodeRootFinder extends UpGoingNodeTraverseCallbackAdapter {
 
-    private final TraverseOrder traverseOrder;
+    private Node root;
 
-    public NodeTraverseCallbackAdapter(TraverseOrder traverseOrder) {
-        this.traverseOrder = traverseOrder;
-    }
-
-    @Override
-    public TraverseOrder getTraverseOrder() {
-        return traverseOrder;
+    public Node getRoot() {
+        return root;
     }
 
     @Override
     public void before(Node node) {
-    }
-
-    @Override
-    public void after(Node node) {
+        if (node.getParent() == null) {
+            root = node;
+        }
     }
 
 }

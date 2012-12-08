@@ -128,7 +128,7 @@ public class EnclosedSnippetParser implements SnippetParser {
             }
             result += next;
         }
-        throw new MissingExpectedTokenException();
+        throw new MissingExpectedTokenException(closing.toArray(new Character[closing.size()]));
     }
 
 }
