@@ -42,7 +42,7 @@ public class CommonTypesValueReader extends ValueReaderSupport {
         if (Integer.class.equals(mappedType)) {
             return ((T) ((Integer) Integer.parseInt(text)));
         } else if (Short.class.equals(mappedType)) {
-            return ((T) ((Integer) Integer.parseInt(text)));
+            return ((T) ((Short) Short.parseShort(text)));
         } else if (Long.class.equals(mappedType)) {
             return ((T) ((Long) Long.parseLong(text)));
         } else if (Boolean.class.equals(mappedType)) {
