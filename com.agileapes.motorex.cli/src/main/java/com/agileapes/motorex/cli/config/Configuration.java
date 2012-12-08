@@ -54,16 +54,14 @@ public interface Configuration {
     <T> T getOption(Character shorthand, T defaultValue) throws NoSuchOptionException;
 
     /**
-     * Will determine whether a value has been provided for the
-     * specified option
+     * Will determine whether the specified option exists or not
      * @param name    the name of the option
      * @return {@code true} if a value is present
      */
     boolean hasOption(String name);
 
     /**
-     * Will determine whether a value has been provided for the
-     * specified option based on its short name
+     * Will determine whether the specified option exists or not based on its short name
      * @param shorthand    the short name for the option
      * @return {@code true} if a value is present
      */
