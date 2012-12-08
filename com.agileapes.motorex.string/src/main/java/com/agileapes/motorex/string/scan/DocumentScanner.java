@@ -122,11 +122,11 @@ public interface DocumentScanner {
      * token specified by the parameter.<br/>
      * <strong>NB</strong> the term token is used somewhat generally here, and does
      * not mean that this interface provides tokenization capabilities on its own.
-     * @param token    the string to match against
+     * @param tokens    the string to match against
      * @return {@code true} if the remainder of the document starts with the
      * given token
      */
-    boolean has(String token);
+    boolean has(String... tokens);
 
     /**
      * This method will examine whether the remainder of the document matches the given pattern

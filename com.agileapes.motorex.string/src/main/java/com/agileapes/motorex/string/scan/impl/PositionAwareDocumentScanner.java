@@ -161,7 +161,9 @@ public class PositionAwareDocumentScanner implements DocumentScanner, PositionAw
     public String expect(String... tokens) throws MissingExpectedTokenException {
         for (String token : tokens) {
             if (has(token)) {
-                return read(token);
+                positionHandler.readString(token);
+                cursor += token.length();
+                return token;
             }
         }
         throw new MissingExpectedTokenException();
@@ -178,8 +180,13 @@ public class PositionAwareDocumentScanner implements DocumentScanner, PositionAw
     }
 
     @Override
-    public boolean has(String token) {
-        return getRemainder().startsWith(token);
+    public boolean has(String... tokens) {
+        for (String token : tokens) {
+            if (getRemainder().startsWith(token)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

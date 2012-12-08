@@ -13,14 +13,31 @@
  * or substantial portions of the Software.
  */
 
-package com.agileapes.motorex.tree.traverse;
+package com.agileapes.motorex.tree.description;
+
+import com.agileapes.motorex.tree.Node;
 
 /**
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
- * @since 1.0 (2012/12/7, 23:18)
+ * @since 1.0 (2012/12/8, 3:42)
  */
-public enum TraverseOrder {
+public class NodeMatcher {
 
-    UP, DOWN
+    private final NodeDescription description;
+    private final Node node;
+
+    NodeMatcher(NodeDescription description, Node node) {
+        this.description = description;
+        this.node = node;
+    }
+
+    public boolean matches() {
+        for (EvaluationDescription evaluator : description.getEvaluators()) {
+            if (!evaluator.test(node)) {
+                return false;
+            }
+        }
+        return true;
+    }
 
 }

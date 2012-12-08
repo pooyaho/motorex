@@ -13,18 +13,40 @@
  * or substantial portions of the Software.
  */
 
-package com.agileapes.motorex.tree.traverse;
+package com.agileapes.motorex.tree.traverse.impl;
 
 import com.agileapes.motorex.tree.Node;
+import com.agileapes.motorex.tree.traverse.NodeTraverseCallback;
 
 /**
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
- * @since 1.0 (2012/12/7, 23:18)
+ * @since 1.0 (2012/12/8, 1:47)
  */
-public interface NodeTraverseCallback {
+public class NodeStringBuilder implements NodeTraverseCallback {
 
-    void before(Node node);
+    private StringBuilder builder = new StringBuilder();
 
-    void after(Node node);
+    @Override
+    public void before(Node node) {
+        if (node.getPreviousSibling() != null) {
+            builder.append(",");
+        }
+        builder.append(node.toString());
+        if (node.hasChildren()) {
+            builder.append("(");
+        }
+    }
+
+    @Override
+    public void after(Node node) {
+        if (node.hasChildren()) {
+            builder.append(")");
+        }
+    }
+
+    @Override
+    public String toString() {
+        return builder.toString();
+    }
 
 }

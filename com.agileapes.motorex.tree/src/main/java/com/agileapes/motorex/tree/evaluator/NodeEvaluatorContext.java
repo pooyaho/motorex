@@ -13,14 +13,25 @@
  * or substantial portions of the Software.
  */
 
-package com.agileapes.motorex.tree.traverse;
+package com.agileapes.motorex.tree.evaluator;
+
+import com.agileapes.motorex.tree.exception.NoSuchEvaluatorException;
 
 /**
+ * This interface will enable the user to find evaluators by their aliases, and then use them
+ * in their queries
+ *
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
- * @since 1.0 (2012/12/7, 23:18)
+ * @since 1.0 (2012/12/8, 3:33)
  */
-public enum TraverseOrder {
+public interface NodeEvaluatorContext {
 
-    UP, DOWN
+    /**
+     * Will look for an evaluator with the given alias
+     * @param name    evaluator name
+     * @return the evaluator
+     * @throws NoSuchEvaluatorException if the name has no corresponding evaluator
+     */
+    NodeEvaluator getEvaluator(String name) throws NoSuchEvaluatorException;
 
 }

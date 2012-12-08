@@ -59,6 +59,8 @@ public interface Node {
     String getQualifiedName();
 
     /**
+     * By setting the attribute value to {@code null}, it is possible to remove that
+     * attribute from the node
      * @param name     attribute name
      * @param value    attribute value
      */
@@ -213,6 +215,5 @@ public interface Node {
      * matches a node does not mean that it uniquely identifies that node.
      */
     boolean matches(String description);
-
 
 }

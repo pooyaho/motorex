@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>motorex-parent</artifactId>
-        <groupId>com.agileapes.motorex.parent</groupId>
+        <groupId>com.agileapes.motorex</groupId>
         <version>0.1</version>
         <relativePath>../com.agileapes.motorex.parent/pom.xml</relativePath>
     </parent>
@@ -13,5 +13,17 @@
     <name>Motorex Tree Tools</name>
     <description>This module will contain utilities for managing information using
     a tree data structure</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.agileapes.motorex</groupId>
+            <artifactId>motorex-string</artifactId>
+            <version>0.1</version>
+        </dependency>
+    </dependencies>
 
 </project>

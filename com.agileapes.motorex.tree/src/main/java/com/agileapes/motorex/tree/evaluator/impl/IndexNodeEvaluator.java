@@ -13,14 +13,31 @@
  * or substantial portions of the Software.
  */
 
-package com.agileapes.motorex.tree.traverse;
+package com.agileapes.motorex.tree.evaluator.impl;
+
+import com.agileapes.motorex.tree.Node;
+
+import java.util.List;
 
 /**
+ * This evaluator will look for the index number of the node
+ * Signature: index(number : Integer)
+ *
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
- * @since 1.0 (2012/12/7, 23:18)
+ * @since 1.0 (2012/12/8, 2:46)
  */
-public enum TraverseOrder {
+public class IndexNodeEvaluator extends NodeEvaluatorSupport {
 
-    UP, DOWN
+    @Override
+    public boolean test(Node node, List<String> parameters) {
+        require(parameters, 1);
+        permit(parameters, 1);
+        try {
+            final int index = Integer.parseInt(parameters.get(0));
+            return index == node.getIndex();
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Invalid integer index: " + parameters.get(0));
+        }
+    }
 
 }

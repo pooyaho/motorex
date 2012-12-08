@@ -13,14 +13,23 @@
  * or substantial portions of the Software.
  */
 
-package com.agileapes.motorex.tree.traverse;
+package com.agileapes.motorex.tree.traverse.impl;
+
+import com.agileapes.motorex.tree.Node;
+import com.agileapes.motorex.tree.traverse.NodeTraverseCallback;
 
 /**
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
- * @since 1.0 (2012/12/7, 23:18)
+ * @since 1.0 (2012/12/8, 1:11)
  */
-public enum TraverseOrder {
+public class NodeTraverseCallbackAdapter implements NodeTraverseCallback {
 
-    UP, DOWN
+    @Override
+    public void before(Node node) {
+    }
+
+    @Override
+    public void after(Node node) {
+    }
 
 }

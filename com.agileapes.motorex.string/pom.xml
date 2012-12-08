@@ -4,12 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>motorex-parent</artifactId>
-        <groupId>com.agileapes.motorex.parent</groupId>
+        <groupId>com.agileapes.motorex</groupId>
         <version>0.1</version>
         <relativePath>../com.agileapes.motorex.parent/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>com.agileapes.motorex.string</artifactId>
+    <artifactId>motorex-string</artifactId>
     <name>Motorex String Tools</name>
     <description>This module will hold tools for managing string data as required by Motorex</description>
 

@@ -13,14 +13,22 @@
  * or substantial portions of the Software.
  */
 
-package com.agileapes.motorex.tree.traverse;
+package com.agileapes.motorex.string.scan.impl;
+
+import com.agileapes.motorex.string.scan.DocumentScanner;
+import com.agileapes.motorex.string.scan.SnippetParser;
+import com.agileapes.motorex.string.token.Token;
+import com.agileapes.motorex.string.token.impl.SimpleToken;
 
 /**
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
- * @since 1.0 (2012/12/7, 23:18)
+ * @since 1.0 (2012/12/8, 4:24)
  */
-public enum TraverseOrder {
+public class IdentifierParser implements SnippetParser {
 
-    UP, DOWN
+    @Override
+    public Token parse(DocumentScanner scanner) {
+        return new SimpleToken(scanner.read("([a-zA-Z_][a-zA-Z_\\d]*)+").length());
+    }
 
 }

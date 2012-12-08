@@ -13,14 +13,11 @@
  * or substantial portions of the Software.
  */
 
-package com.agileapes.motorex.tree.traverse;
+package com.agileapes.motorex.tree.exception;
 
 /**
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
- * @since 1.0 (2012/12/7, 23:18)
+ * @since 1.0 (2012/12/8, 1:02)
  */
-public enum TraverseOrder {
-
-    UP, DOWN
-
+public class NoSuchNodeException extends Error {
 }

@@ -123,8 +123,11 @@ public class EnclosedSnippetParserTest {
 
     @Test
     public void testEnclosedWithNestingWithEscapingSupport() throws Exception {
-        final String parsed = parse("(hello())", new EnclosedSnippetParser("(", ")", null, false, true, '\\'));
+        final PositionAwareDocumentScanner scanner = new PositionAwareDocumentScanner("(hello())");
+        final String parsed = scanner.parse(new EnclosedSnippetParser("(", ")", null, false, true, '\\'));
         Assert.assertEquals(parsed, "hello()");
+        scanner.expect(')');
+        Assert.assertEquals(scanner.remaining(), 0);
     }
 
     @Test(expectedExceptions = MissingExpectedTokenException.class)

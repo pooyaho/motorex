@@ -13,14 +13,26 @@
  * or substantial portions of the Software.
  */
 
-package com.agileapes.motorex.tree.traverse;
+package com.agileapes.motorex.tree.exception;
 
 /**
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
- * @since 1.0 (2012/12/7, 23:18)
+ * @since 1.0 (2012/12/8, 3:34)
  */
-public enum TraverseOrder {
+public class DuplicateEvaluatorException extends Error {
 
-    UP, DOWN
+    public DuplicateEvaluatorException() {
+    }
 
+    public DuplicateEvaluatorException(String message) {
+        super(message);
+    }
+
+    public DuplicateEvaluatorException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public DuplicateEvaluatorException(Throwable cause) {
+        super(cause);
+    }
 }

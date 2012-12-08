@@ -22,7 +22,10 @@ import com.agileapes.motorex.string.scan.SnippetParser;
 import com.agileapes.motorex.string.token.Token;
 import com.agileapes.motorex.string.token.impl.SimpleTaggedToken;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * This implementation of {@link SnippetParser} will allow developers to discover textual data

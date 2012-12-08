@@ -13,14 +13,29 @@
  * or substantial portions of the Software.
  */
 
-package com.agileapes.motorex.tree.traverse;
+package com.agileapes.motorex.tree.evaluator.impl;
+
+import com.agileapes.motorex.tree.Node;
+
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
+ * This evaluator will base its decision regarding the nodes name.
+ * Signature: name(pattern : Pattern)
+ *
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
- * @since 1.0 (2012/12/7, 23:18)
+ * @since 1.0 (2012/12/8, 2:36)
  */
-public enum TraverseOrder {
+public class NameNodeEvaluator extends NodeEvaluatorSupport {
 
-    UP, DOWN
+    @Override
+    public boolean test(Node node, List<String> parameters) {
+        require(parameters, 1);
+        permit(parameters, 1);
+        final Matcher matcher = Pattern.compile(parameters.get(0), Pattern.DOTALL).matcher(node.getName());
+        return matcher.matches();
+    }
 
 }

@@ -13,28 +13,26 @@
  * or substantial portions of the Software.
  */
 
-package com.agileapes.motorex.string.token;
+package com.agileapes.motorex.tree.evaluator;
 
-import com.agileapes.motorex.string.exception.TokenizerException;
-import com.agileapes.motorex.string.scan.DocumentScanner;
-
-import java.io.Reader;
+import com.agileapes.motorex.tree.exception.DuplicateEvaluatorException;
 
 /**
- * A token reader will take input from the given reader, and return a token definition
+ * Will enable users to develop registries of NodeEvaluators and register the
+ * evaluators in a standard fashion
  *
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
- * @since 1.0 (2012/12/7, 18:30)
+ * @since 1.0 (2012/12/8, 3:34)
  */
-public interface TokenReader {
+public interface NodeEvaluatorRegistry {
 
     /**
-     * This method is expected to take data from the {@link Reader} parameter, and either
-     * designate a valid token, or return {@code null} if no such token could be found
-     * @param documentScanner    the reader used by the tokenizer mechanism
-     * @return the token
-     * @throws TokenizerException if the tokenization fails in any way
+     * Will attempt to register the given evaluator with the provided alias
+     * @param name         the name of the evaluator
+     * @param evaluator    the node evaluator instance
+     * @throws DuplicateEvaluatorException if another evaluator with the specified
+     * name has been declared.
      */
-    Token read(DocumentScanner documentScanner) throws TokenizerException;
+    void register(String name, NodeEvaluator evaluator) throws DuplicateEvaluatorException;
 
 }

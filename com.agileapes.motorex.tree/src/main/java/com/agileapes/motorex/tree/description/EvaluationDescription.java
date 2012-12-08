@@ -13,14 +13,33 @@
  * or substantial portions of the Software.
  */
 
-package com.agileapes.motorex.tree.traverse;
+package com.agileapes.motorex.tree.description;
+
+import com.agileapes.motorex.tree.Node;
+import com.agileapes.motorex.tree.evaluator.NodeEvaluator;
+
+import java.util.List;
 
 /**
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
- * @since 1.0 (2012/12/7, 23:18)
+ * @since 1.0 (2012/12/8, 3:44)
  */
-public enum TraverseOrder {
+class EvaluationDescription {
 
-    UP, DOWN
+    private final NodeEvaluator evaluator;
+    private final List<String> parameters;
+
+    EvaluationDescription(NodeEvaluator evaluator, List<String> parameters) {
+        this.evaluator = evaluator;
+        this.parameters = parameters;
+    }
+
+    NodeEvaluator getEvaluator() {
+        return evaluator;
+    }
+
+    boolean test(Node node) {
+        return evaluator.test(node, parameters);
+    }
 
 }
