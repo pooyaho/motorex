@@ -26,17 +26,17 @@ import java.lang.reflect.Method;
  */
 public class PrimitiveTypeMapperTest {
 
-    public int method() {
-        return 0;
-    }
-
     @Test
     public void testTypeMapping() throws Exception {
         final PrimitiveTypeMapper mapper = new PrimitiveTypeMapper();
-        final Method method = PrimitiveTypeMapperTest.class.getMethod("method");
-        Assert.assertNotEquals(method.getReturnType(), Integer.class);
-        final Class<?> type = mapper.getType(method.getReturnType());
-        Assert.assertEquals(type, Integer.class);
+        Assert.assertEquals(mapper.getType(int.class), Integer.class);
+        Assert.assertEquals(mapper.getType(short.class), Short.class);
+        Assert.assertEquals(mapper.getType(long.class), Long.class);
+        Assert.assertEquals(mapper.getType(boolean.class), Boolean.class);
+        Assert.assertEquals(mapper.getType(byte.class), Byte.class);
+        Assert.assertEquals(mapper.getType(char.class), Character.class);
+        Assert.assertEquals(mapper.getType(double.class), Double.class);
+        Assert.assertEquals(mapper.getType(float.class), Float.class);
     }
 
 }
