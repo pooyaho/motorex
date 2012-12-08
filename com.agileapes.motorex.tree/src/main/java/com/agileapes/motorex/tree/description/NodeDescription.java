@@ -49,10 +49,6 @@ public class NodeDescription {
     private final List<EvaluationDescription> evaluators;
     private final NodeEvaluatorContext evaluatorContext;
 
-    private NodeDescription() {
-        this(null);
-    }
-
     private NodeDescription(NodeEvaluatorContext evaluatorContext) {
         if (evaluatorContext == null) {
             evaluatorContext = new DefaultNodeEvaluatorContext();
@@ -320,13 +316,11 @@ public class NodeDescription {
                 //reading the index opener ...
                 scanner.expect('#');
                 //and then the integer value itself
-                final String indexStr = scanner.expect(Pattern.compile("\\d+"));
-                final int index;
-                try {
-                    index = Integer.parseInt(indexStr);
-                } catch (NumberFormatException e) {
-                    throw new IllegalArgumentException("Not a valid integer: " + indexStr);
+                final String indexStr = scanner.read(Pattern.compile("\\d+"));
+                if (indexStr.isEmpty()) {
+                    throw new IllegalArgumentException("Expected integer argument not found");
                 }
+                final int index = Integer.parseInt(indexStr);
                 nodeDescription.addEvaluator("$index", String.valueOf(index));
                 return new SimpleToken(scanner.getOffset() - offset);
             }
@@ -346,9 +340,8 @@ public class NodeDescription {
                 while (scanner.remaining() > 0) {
                     final String next = scanner.peek(1);
                     if (STANDARD_QUOTATION.contains(next)) {
-                        name += next;
                         name += scanner.parse(new EnclosedSnippetParser(next, next, null, false, true, '\\'));
-                        name += scanner.expect(next.charAt(0));
+                        scanner.expect(next.charAt(0));
                         continue;
                     } else if (scanner.has("#", "[", "{")) {
                         break;

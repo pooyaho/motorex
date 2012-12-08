@@ -38,8 +38,12 @@ class EvaluationDescription {
         return evaluator;
     }
 
+    List<String> getParameters() {
+        return parameters;
+    }
+
     boolean test(Node node) {
-        return evaluator.test(node, parameters);
+        return evaluator.test(node, getParameters());
     }
 
 }
