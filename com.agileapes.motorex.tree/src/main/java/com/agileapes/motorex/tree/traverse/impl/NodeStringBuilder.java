@@ -25,7 +25,7 @@ import com.agileapes.motorex.tree.traverse.TraverseOrder;
  */
 public class NodeStringBuilder implements NodeTraverseCallback {
 
-    private StringBuilder builder = new StringBuilder();
+    private final StringBuilder builder = new StringBuilder();
 
     @Override
     public TraverseOrder getTraverseOrder() {

@@ -30,7 +30,7 @@ import java.util.Map;
  */
 public class DefaultNodeEvaluatorContext implements NodeEvaluatorContext, NodeEvaluatorRegistry {
 
-    private Map<String, NodeEvaluator> evaluators;
+    private final Map<String, NodeEvaluator> evaluators;
 
     public DefaultNodeEvaluatorContext() {
         evaluators = new HashMap<String, NodeEvaluator>();
