@@ -112,4 +112,5 @@ public class ArrayConfigurationBuilder implements ConfigurationBuilder, ValueRea
         }
         return configuration;
     }
+
 }

@@ -43,7 +43,7 @@ public abstract class AbstractIdentifiedExecutionTarget implements ExecutionTarg
     }
 
     protected AbstractIdentifiedExecutionTarget(Option... options) {
-        this.options = Arrays.asList(options);
+        this(Arrays.asList(options));
     }
 
     public void setIdentifier(String identifier) {

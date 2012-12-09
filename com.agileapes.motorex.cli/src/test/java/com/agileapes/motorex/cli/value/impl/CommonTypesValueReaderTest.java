@@ -82,7 +82,6 @@ public class CommonTypesValueReaderTest {
         final byte[] bytes = new byte[100 + new Random().nextInt(100)];
         new Random().nextBytes(bytes);
         final String value = new String(bytes);
-        System.out.println("value = " + value);
         final String read = new CommonTypesValueReader().read(value, String.class);
         Assert.assertEquals(read, value);
     }

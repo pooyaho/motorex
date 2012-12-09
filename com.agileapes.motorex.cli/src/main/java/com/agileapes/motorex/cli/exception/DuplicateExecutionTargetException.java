@@ -24,4 +24,5 @@ public class DuplicateExecutionTargetException extends Error {
     public DuplicateExecutionTargetException(String identifier) {
         super("Another execution target with identifier " + identifier + " is already registered");
     }
+
 }

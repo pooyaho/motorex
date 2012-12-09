@@ -37,8 +37,13 @@ import java.util.Set;
  */
 public class DefaultExecutionTargetContext implements ExecutionTargetContext, ExecutionTargetRegistry {
 
-    private Map<String, ExecutionTarget> targets = new HashMap<String, ExecutionTarget>();
-    private ExecutionTarget defaultTarget = null;
+    private Map<String, ExecutionTarget> targets;
+    private ExecutionTarget defaultTarget;
+
+    public DefaultExecutionTargetContext() {
+        this.targets = new HashMap<String, ExecutionTarget>();
+        this.defaultTarget = null;
+    }
 
     @Override
     public ExecutionTarget getDefaultTarget() throws NoSuchExecutionTargetException {
