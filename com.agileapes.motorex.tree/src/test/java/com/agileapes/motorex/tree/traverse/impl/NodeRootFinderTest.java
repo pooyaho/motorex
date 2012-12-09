@@ -16,36 +16,24 @@
 package com.agileapes.motorex.tree.traverse.impl;
 
 import com.agileapes.motorex.tree.Node;
+import com.agileapes.motorex.tree.impl.StandardNode;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 /**
  * @author Mohammad Milad Naseri (m.m.naseri@gmail.com)
- * @since 1.0 (2012/12/8, 1:47)
+ * @since 1.0 (2012/12/9, 3:50)
  */
-public class NodeStringBuilder extends DownGoingNodeTraverseCallbackAdapter {
+public class NodeRootFinderTest {
 
-    private final StringBuilder builder = new StringBuilder();
-
-    @Override
-    public void before(Node node) {
-        if (node.getPreviousSibling() != null) {
-            builder.append(",");
-        }
-        builder.append(node.toString());
-        if (node.hasChildren()) {
-            builder.append("(");
-        }
-    }
-
-    @Override
-    public void after(Node node) {
-        if (node.hasChildren()) {
-            builder.append(")");
-        }
-    }
-
-    @Override
-    public String toString() {
-        return builder.toString();
+    @Test
+    public void testFindingTheRoot() throws Exception {
+        final StandardNode root = new StandardNode("a");
+        root.appendChild(new StandardNode("b"));
+        final StandardNode c = new StandardNode("c");
+        root.getFirstChild().appendChild(c);
+        final Node node = c.traverse(new NodeRootFinder()).getRoot();
+        Assert.assertEquals(node, root);
     }
 
 }

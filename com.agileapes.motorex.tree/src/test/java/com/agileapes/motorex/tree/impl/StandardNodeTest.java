@@ -207,4 +207,9 @@ public class StandardNodeTest {
         Assert.assertTrue(node.getAttributeNames().isEmpty());
     }
 
+    @Test(expectedExceptions = NullPointerException.class)
+    public void testNullTraverseCallback() throws Exception {
+        new StandardNode().traverse(null);
+    }
+
 }
